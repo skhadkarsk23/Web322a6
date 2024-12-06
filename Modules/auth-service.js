@@ -30,30 +30,28 @@ const initialize = () => {
 
 const registerUser = async (userData) => {
   if (userData.password !== userData.password2) {
-      throw new Error("Passwords do not match")
-    }
+    throw new Error("Passwords do not match");
+  }
 
-    try {
-      // Hash the user's password before storing it in the database
-      const hashedPassword = await bcrypt.hash(userData.password, 10);
-  
-      const newUser = new User({
-        userName: userData.userName,
-        password: hashedPassword, // Store the hashed password
-        email: userData.email,
-        loginHistory: [],
-      })
-  
-      await newUser.save()
-      console.log("User registered:", newUser.userName)
-    } catch (error) {
-      if (error.code === 11000) {
-        throw new Error("User Name already taken")
-      } else {
-        throw new Error("There was an error encrypting the password: " + error)
-      }
+  const hashedPassword = await bcrypt.hash(userData.password, 10);
+
+  const newUser = new User({
+    userName: userData.userName,
+    password: hashedPassword,
+    email: userData.email,
+    loginHistory: [],
+  });
+
+  try {
+    await newUser.save();
+  } catch (error) {
+    if (error.code === 11000) {
+      throw new Error("Username is already taken");
     }
-}
+    throw new Error("Error during registration: " + error.message);
+  }
+};
+
 
 const checkUser = async (userData) => {
   try {

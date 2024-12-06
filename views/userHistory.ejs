@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <title>User History</title>
+</head>
+<body>
+  <%- include('partials/navbar', { page: '/userHistory' }) %>
+
+  <div class="container mx-auto mt-10">
+    <div class="hero bg-base-200 p-6 rounded-lg shadow-lg">
+      <h1 class="text-4xl font-bold text-center">Login History</h1>
+      <p class="text-center mt-2">Review your login activity below.</p>
+    </div>
+
+    <div class="mt-6">
+      <table class="table-auto w-full bg-base-200 rounded-lg shadow-lg">
+        <thead>
+          <tr>
+            <th class="px-4 py-2">Date & Time</th>
+            <th class="px-4 py-2">User Agent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% user.loginHistory.forEach((entry) => { %>
+          <tr class="border-t">
+            <td class="px-4 py-2"><%= entry.dateTime %></td>
+            <td class="px-4 py-2"><%= entry.userAgent %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

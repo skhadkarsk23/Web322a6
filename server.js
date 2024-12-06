@@ -84,18 +84,20 @@ app.post("/register", (req, res) => {
     .registerUser(req.body)
     .then(() => {
       res.render("register", {
-        successMessage: "User created",
+        successMessage: "User created successfully! Please proceed to login.",
         errorMessage: "",
-      })
+        userName: "", // Clear username field after successful registration
+      });
     })
     .catch((err) => {
       res.render("register", {
-        errorMessage: err,
-        userName: req.body.userName,
         successMessage: "",
-      })
-    })
-})
+        errorMessage: err.message || "An error occurred during registration.",
+        userName: req.body.userName, // Preserve username field for retry
+      });
+    });
+});
+
 
 app.get("/login", (req, res) => {
   res.render("login", { errorMessage: "", userName: "" })

@@ -1,16 +1,17 @@
 <nav class="navbar bg-neutral text-base-content shadow-lg">
+  <!-- Left: Logo -->
   <div class="navbar-start">
     <a class="btn btn-ghost normal-case text-xl text-primary hover:text-accent" href="/">Lego Collection</a>
   </div>
 
-  <div class="navbar-center hidden lg:flex ml-auto space-x-4 justify-end">
-    <a class="btn bg-primary text-black hover:bg-secondary <%= page === '/' ? 'active' : '' %>" href="/">Home</a>
+  <!-- Right: Navigation Links -->
+  <div class="navbar-end space-x-4">
     <a class="btn bg-primary text-black hover:bg-secondary <%= page === '/lego/sets' ? 'active' : '' %>" href="/lego/sets">View Collection</a>
-    <a class="btn bg-primary text-black hover:bg-secondary <%= page === '/lego/addSet' ? 'active' : '' %>" href="/lego/addSet">Add to Collection</a>
     <a class="btn bg-primary text-black hover:bg-secondary <%= page === '/about' ? 'active' : '' %>" href="/about">About</a>
 
     <!-- Account Dropdown -->
     <% if (!session.user) { %>
+      <!-- Guest Account -->
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn bg-primary text-black hover:bg-secondary">Account</label>
         <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-neutral rounded-box w-52">
@@ -19,30 +20,17 @@
         </ul>
       </div>
     <% } else { %>
-      <a class="btn bg-primary text-black hover:bg-secondary" href="/logout">Logout</a>
-    <% } %>
-  </div>
-
-  <div class="navbar-end lg:hidden">
-    <div class="dropdown">
-      <label tabindex="0" class="btn btn-ghost text-base-content hover:bg-secondary">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
-        </svg>
-      </label>
-      <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-neutral rounded-box w-52">
-        <li><a href="/" class="bg-primary text-black hover:bg-secondary <%= page === '/' ? 'active' : '' %>">Home</a></li>
-        <li><a href="/lego/sets" class="bg-primary text-black hover:bg-secondary <%= page === '/lego/sets' ? 'active' : '' %>">View Collection</a></li>
-        <li><a href="/lego/addSet" class="bg-primary text-black hover:bg-secondary <%= page === '/lego/addSet' ? 'active' : '' %>">Add to Collection</a></li>
-        <li><a href="/about" class="bg-primary text-black hover:bg-secondary <%= page === '/about' ? 'active' : '' %>">About</a></li>
-        <!-- Account Dropdown for mobile -->
-        <% if (!session.user) { %>
-          <li><a href="/login" class="bg-primary text-black hover:bg-secondary <%= page === '/login' ? 'active' : '' %>">Login</a></li>
-          <li><a href="/register" class="bg-primary text-black hover:bg-secondary <%= page === '/register' ? 'active' : '' %>">Register</a></li>
-        <% } else { %>
+      <!-- Logged-In Account -->
+      <div class="dropdown dropdown-end">
+        <label tabindex="0" class="btn bg-primary text-black hover:bg-secondary">
+          Account: <%= session.user.userName %>
+        </label>
+        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-neutral rounded-box w-52">
+          <li><a href="/lego/addSet" class="bg-primary text-black hover:bg-secondary">Add to Collection</a></li>
+          <li><a href="/userHistory" class="bg-primary text-black hover:bg-secondary">User History</a></li>
           <li><a href="/logout" class="bg-primary text-black hover:bg-secondary">Logout</a></li>
-        <% } %>
-      </ul>
-    </div>
+        </ul>
+      </div>
+    <% } %>
   </div>
 </nav>
