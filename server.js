@@ -8,7 +8,7 @@
 * 
 *  Name: Saurab Khadka Student ID: 148501224 Date: 2024/12/05
 * 
-*  Published URL: assignment5finalllllll.vercel.app
+*  Published URL: https://submita6.vercel.app/
 ********************************************************************************/
 
 
@@ -131,9 +131,16 @@ app.get("/userHistory", ensureLogin, (req, res) => {
 })
 
 // Routes
-app.get("/", (req, res) => {
-  res.render("home")
-})
+app.get("/", async (req, res) => {
+  try {
+    const sets = await legoData.getAllSets(); // Fetch all sets
+    res.render("home", { sets }); // Pass sets to the home.ejs template
+  } catch (error) {
+    console.error("Error fetching sets for home:", error);
+    res.render("home", { sets: [] }); // Pass an empty array if an error occurs
+  }
+});
+
 
 
 app.get("/about", (req, res) => {
