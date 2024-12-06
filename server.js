@@ -12,6 +12,8 @@
 ********************************************************************************/
 
 
+const mongoose = require('mongoose');
+require('dotenv').config(); // Load environment variables
 const clientSessions = require("client-sessions")
 const express = require('express')
 const path = require('path')
@@ -26,6 +28,14 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, "public")))
 app.use(express.urlencoded({ extended: true })) // Add this line for form data parsing
+
+
+// Connect to MongoDB
+mongoose
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected successfully!'))
+  .catch((err) => console.error('MongoDB connection error:', err));
+  console.log('MongoDB URI:', process.env.MONGODB_URI);
 
 
 app.use((req, res, next) => {
