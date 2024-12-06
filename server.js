@@ -260,17 +260,4 @@ app.get('/lego/deleteSet/:num', (req, res) => {
 
 
 
-
-/*
-async function run() {
-    await legoData.initialize() // testing functions
-
-    const allSets = legoData.getAllSets()
-    console.log(allSets)
-
-    const specificSet = await legoData.getSetByNum("0003977811-1")
-    console.log(specificSet)
-}
-
-run().catch(console.error)
-*/
+module.exports = app;
