@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "tw:build": "npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/main.css --watch"
+    "start": "node server.js",  // Ensures that Vercel runs your server.js
+    "build": "echo 'No build step defined'",  // Placeholder for build step (not needed if no build step)
+    "dev": "node server.js" // For local development (you can run this to start your server locally)
   },
   "author": "John Smith",
   "license": "ISC",
