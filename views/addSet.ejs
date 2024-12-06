@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Set</title>
+    <link href="/css/main.css" rel="stylesheet" />
+   
+    </script>
+  </head>
+  <body class="bg-base-100 text-base-content">
+    <!-- Include Navbar -->
+    <%- include('partials/navbar', { page: '/lego/addSet' }) %>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-6">
+      <div class="max-w-lg mx-auto">
+        <!-- Hero Section -->
+        <div class="text-center mb-8">
+          <h1 class="text-4xl font-bold">Add Set</h1>
+          <p class="mt-2 text-sm text-gray-500">
+            Fill out the form below to add a new Lego set to your collection.
+          </p>
+        </div>
+
+        <!-- Form -->
+        <form
+          action="/lego/addSet"
+          method="POST"
+          class="space-y-4 bg-base-200 p-6 rounded-lg shadow-md"
+        >
+          <!-- Set Number -->
+          <div class="form-control">
+            <label for="set_num" class="label">
+              <span class="label-text">Set Number</span>
+            </label>
+            <input
+              type="text"
+              id="set_num"
+              name="set_num"
+              class="input input-bordered"
+              required
+            />
+          </div>
+
+          <!-- Name -->
+          <div class="form-control">
+            <label for="name" class="label">
+              <span class="label-text">Name</span>
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="input input-bordered"
+              required
+            />
+          </div>
+
+          <!-- Year -->
+          <div class="form-control">
+            <label for="year" class="label">
+              <span class="label-text">Year</span>
+            </label>
+            <input
+              type="number"
+              id="year"
+              name="year"
+              class="input input-bordered"
+              required
+            />
+          </div>
+
+          <!-- Number of Parts -->
+          <div class="form-control">
+            <label for="num_parts" class="label">
+              <span class="label-text">Number of Parts</span>
+            </label>
+            <input
+              type="number"
+              id="num_parts"
+              name="num_parts"
+              class="input input-bordered"
+              required
+            />
+          </div>
+
+          <!-- Image URL -->
+          <div class="form-control">
+            <label for="img_url" class="label">
+              <span class="label-text">Image URL</span>
+            </label>
+            <input
+              type="url"
+              id="img_url"
+              name="img_url"
+              class="input input-bordered"
+              required
+            />
+          </div>
+
+          <!-- Theme -->
+          <div class="form-control">
+            <label for="theme_id" class="label">
+              <span class="label-text">Theme</span>
+            </label>
+            <select
+              id="theme_id"
+              name="theme_id"
+              class="select select-bordered"
+              required
+            >
+              <option value="" disabled selected>Select a theme</option>
+              <% themes.forEach(theme => { %>
+              <option value="<%= theme.id %>"><%= theme.name %></option>
+              <% }) %>
+            </select>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="form-control mt-6">
+            <button type="submit" class="btn btn-primary w-full">
+              Add Set
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

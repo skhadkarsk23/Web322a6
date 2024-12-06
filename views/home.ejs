@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lego Collection</title>
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body tabindex="-1">
+<%- include('partials/navbar', { page: '/' }) %>
+<br />
+
+
+
+<div class="md:container md:mx-auto mt-10">
+  <section class="hero bg-base-200 p-6 rounded-lg flex flex-col items-center justify-center">
+    <h1 class="text-5xl font-bold text-center mb-4">Welcome to the Lego Collection</h1>
+    <a href="/lego/sets" class="btn btn-primary text-center mt-4">Explore Sets</a>
+  </section>
+      <div class="grid grid-cols-3 gap-4 mt-10">
+        <% sets.forEach(set => { %>
+          <div class="card">
+            <img src="<%= set.img_url %>" alt="Set <%= set.name %>" class="w-full h-48 object-cover">
+            <h2 class="text-2xl font-bold mt-2"><%= set.name %></h2>
+            <p class="text-sm">Released in <%= set.year %>, with <%= set.num_parts %> parts.</p>
+            <a href="/lego/sets/<%= set.set_num %>" class="btn mt-4">View</a>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+  </div>

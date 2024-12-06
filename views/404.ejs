@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/main.css" rel="stylesheet">
+    <title>Page Not Found</title>
+  </head>
+<body class="bg-gray-400">
+  <%- include('partials/navbar', {page: ''}) %>
+  
+    <div class="container mx-auto mt-10">
+        <div class="hero bg-base-200 p-6 rounded-lg shadow-lg">
+            <div class="text-center hero-content">
+                <div class="max-w-lg">
+                    <h1 class="text-5xl font-bold text-red-500">404 Page Not Found</h1>
+                    <p class="py-6">Too bad! You visit to 404 Error page, there must have something wrong here! You should return home</p>
+                    <a href="/" class="btn btn-primary">Return Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
