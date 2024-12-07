@@ -32,10 +32,10 @@ app.use(express.urlencoded({ extended: true })) // Add this line for form data p
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('MongoDB connected successfully!'))
-  .catch((err) => console.error('MongoDB connection error:', err));
-  console.log('MongoDB URI:', process.env.MONGODB_URI);
+.connect(process.env.MONGODB_URI)
+.then(() => console.log('MongoDB connected successfully!'))
+.catch((err) => console.error('MongoDB connection error:', err));
+console.log('MongoDB URI:', process.env.MONGODB_URI);
 
 
 app.use((req, res, next) => {
