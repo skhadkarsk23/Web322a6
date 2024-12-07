@@ -8,7 +8,7 @@
 * 
 *  Name: Saurab Khadka Student ID: 148501224 Date: 2024/12/05
 * 
-*  Published URL: https://submita6.vercel.app/
+*  Published URL: https://rskassign6.vercel.app/
 ********************************************************************************/
 const mongoose = require('mongoose');
 require('dotenv').config();

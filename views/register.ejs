@@ -64,12 +64,14 @@
                 <div class="form-control mt-5">
                   <label for="email">Email</label>
                   <input
-                    class="input input-bordered input-primary w-full max-w"
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Email Address"
-                    required
+                  class="input input-bordered input-primary w-full max-w"
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email Address"
+                  required
+                  pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$"
+                  title="Email must be a valid gmail.com address"
                   />
                 </div>
 

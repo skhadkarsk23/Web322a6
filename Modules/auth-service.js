@@ -29,6 +29,11 @@ const initialize = () => {
 }
 
 const registerUser = async (userData) => {
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+  if (!emailRegex.test(userData.email)) {
+    throw new Error("Email must be a valid gmail.com address");
+  }
+  
   if (userData.password !== userData.password2) {
     throw new Error("Passwords do not match");
   }
